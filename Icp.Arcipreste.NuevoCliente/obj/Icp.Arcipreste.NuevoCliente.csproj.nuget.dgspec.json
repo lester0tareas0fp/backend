@@ -1,26 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lester\\Desktop\\Proyecto\\Proyecto_Icp-Servicios_REST-main\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj": {}
+    "F:\\Desktop\\Proyecto\\backend\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lester\\Desktop\\Proyecto\\Proyecto_Icp-Servicios_REST-main\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj": {
+    "F:\\Desktop\\Proyecto\\backend\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lester\\Desktop\\Proyecto\\Proyecto_Icp-Servicios_REST-main\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj",
+        "projectUniqueName": "F:\\Desktop\\Proyecto\\backend\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj",
         "projectName": "Icp.Arcipreste.NuevoCliente",
-        "projectPath": "C:\\Users\\lester\\Desktop\\Proyecto\\Proyecto_Icp-Servicios_REST-main\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj",
-        "packagesPath": "C:\\Users\\lester\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lester\\Desktop\\Proyecto\\Proyecto_Icp-Servicios_REST-main\\Icp.Arcipreste.NuevoCliente\\obj\\",
+        "projectPath": "F:\\Desktop\\Proyecto\\backend\\Icp.Arcipreste.NuevoCliente\\Icp.Arcipreste.NuevoCliente.csproj",
+        "packagesPath": "C:\\Users\\practicas\\.nuget\\packages\\",
+        "outputPath": "F:\\Desktop\\Proyecto\\backend\\Icp.Arcipreste.NuevoCliente\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lester\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\practicas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -73,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
         }
       }
     }

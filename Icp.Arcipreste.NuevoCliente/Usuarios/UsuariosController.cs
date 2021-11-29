@@ -16,7 +16,7 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<List<Usuario>>> Get()
+		public async Task<ActionResult<List<UsuarioListaDTO>>> Get()
 		{
 			try
 			{
@@ -38,7 +38,7 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios
 			{
 				var user = await _usuariosService.PostUsuarioVerificado(dato);
 
-				UsuarioAuthDTO usuarioAuth = new UsuarioAuthDTO(user.USUARIO, user.ID_PERFIL);
+				UsuarioAuthDTO usuarioAuth = new UsuarioAuthDTO(user.USUARIO, user.ID_PERFIL, user.ID_USUARIO);
 				
 				return Ok(usuarioAuth);
 
@@ -65,5 +65,23 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios
 				return BadRequest(ex.Message);
 			}
 		}
+
+		[HttpPost]
+		[Route("borrarUsuario")]
+		public async Task<ActionResult<string>> PostArticuloDelete([FromBody] UsuarioMainDTO usuario)
+		{
+			try
+			{
+				var respuesta = await _usuariosService.UsuarioDelete(usuario);
+
+				return Ok(respuesta);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
+
 	}
 }

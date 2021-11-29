@@ -65,6 +65,26 @@ namespace Icp.Arcipreste.NuevoCliente.Articulos.Negocio
 			return ret;
 		}
 
+		public async Task<RetcodeMensaje<Articulo>> ArticuloDelete(ArticuloMainDTO articulo)
+		{
+			var ret = new RetcodeMensaje<Articulo>();
+			var invoker = 0;
+			var retcode = 0;
+			var usuario = "";
+			var leng = "es";
+			var mensaje = "";
+			articulosCtx.PaBorrarArticulo(articulo.id_articulo, invoker, usuario, leng, out retcode, out mensaje);
+
+			if (retcode != 10)
+			{
+				throw new Exception(mensaje);
+			}
+			ret.RetCode = retcode;
+			ret.Mensaje = mensaje;
+
+			return ret;
+		}
+
 
 
 	}

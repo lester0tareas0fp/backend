@@ -287,6 +287,66 @@ namespace Icp.Arcipreste.NuevoCliente
 			mensaje = (string)paramMENSAJE.Value;
 		}
 
+		//Borrar Artículo
+
+		public void PaBorrarArticulo(int id_articulo, int? invoker, string usuario, string cultura, out int retCode, out string mensaje)
+		{
+
+			// PARAMETROS OUTPUT
+			var paramRETCODE = new SqlParameter
+			{
+				ParameterName = "RETCODE",
+				Direction = System.Data.ParameterDirection.Output,
+				SqlDbType = System.Data.SqlDbType.Int,
+			};
+			var paramMENSAJE = new SqlParameter
+			{
+				ParameterName = "MENSAJE",
+				Size = 1000,
+				Direction = System.Data.ParameterDirection.Output,
+				SqlDbType = System.Data.SqlDbType.VarChar,
+			};
+
+
+			// PARAMETROS INPUT
+			var sqlParameters = new[]
+			{
+					new SqlParameter
+					{
+						ParameterName = "ID_ARTICULO",
+						Value = id_articulo,
+						SqlDbType = System.Data.SqlDbType.Int,
+					},
+					new SqlParameter
+					{
+						ParameterName = "CULTURA",
+						Value = cultura,
+						Size = 5,
+						SqlDbType = System.Data.SqlDbType.VarChar,
+					},
+					new SqlParameter
+					{
+						ParameterName = "INVOKER",
+						Value = invoker ?? Convert.DBNull,
+						SqlDbType = System.Data.SqlDbType.Int,
+					},
+					new SqlParameter
+					{
+						ParameterName = "USUARIO",
+						Size = 12,
+						Value = usuario ?? Convert.DBNull,
+						SqlDbType = System.Data.SqlDbType.VarChar,
+					},
+					paramRETCODE,
+					paramMENSAJE
+			   };
+
+			this.Database.ExecuteSqlRaw("EXEC [dbo].[PA_BORRAR_ARTICULO] @ID_ARTICULO, @INVOKER, @USUARIO,	@CULTURA, @RETCODE OUTPUT, @MENSAJE OUTPUT", sqlParameters);
+
+			retCode = (int)paramRETCODE.Value;
+			mensaje = (string)paramMENSAJE.Value;
+		}
+
 
 	}
 }

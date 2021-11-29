@@ -71,6 +71,22 @@ namespace Icp.Arcipreste.NuevoCliente.Articulos
 			}
 		}
 
+		[HttpPost]
+		[Route("borrarArticulo")]
+		public async Task<ActionResult<string>> PostArticuloDelete([FromBody] ArticuloMainDTO articulo)
+		{
+			try
+			{
+				var respuesta = await _articulosService.ArticuloDelete(articulo);
+
+				return Ok(respuesta);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
 
 	}
 }

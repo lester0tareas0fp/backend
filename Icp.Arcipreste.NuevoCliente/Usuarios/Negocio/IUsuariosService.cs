@@ -6,9 +6,11 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios.Negocio
 {
 	public interface IUsuariosService
 	{
-		Task<List<Usuario>> GetUsuarios();
+		Task<List<UsuarioListaDTO>> GetUsuarios();
 		Task<Usuario> PostUsuarioVerificado(UsuarioEntradaAuthDTO dato);
 
 		Task<RetcodeMensaje<Usuario>> AddUsuario(UsuarioDTO usuario);
+
+		Task<RetcodeMensaje<Usuario>> UsuarioDelete(UsuarioMainDTO usuario);
 	}
 }

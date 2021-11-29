@@ -13,9 +13,9 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios.Negocio
 			this.usuariosCtx = usuariosCtx;
 		}
 
-		public async Task<List<Usuario>> GetUsuarios()
+		public async Task<List<UsuarioListaDTO>> GetUsuarios()
 		{
-			return await usuariosCtx.Usuario.ToListAsync();
+			return await usuariosCtx.Usuario.Select(x => new UsuarioListaDTO(x.USUARIO, x.ID_USUARIO, x.EMAIL, x.ID_PERFIL) ).ToListAsync();
 		}
 
 		public async Task<Usuario> PostUsuarioVerificado(UsuarioEntradaAuthDTO dato)
@@ -54,6 +54,26 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios.Negocio
 			ret.RetCode = retcode;
 			ret.Mensaje = mensaje;
 			return ret;
-		}	
+		}
+
+		public async Task<RetcodeMensaje<Usuario>> UsuarioDelete(UsuarioMainDTO usuario)
+		{
+			var ret = new RetcodeMensaje<Usuario>();
+			var invoker = 0;
+			var retcode = 0;
+			var user = "";
+			var leng = "es";
+			var mensaje = "";
+			usuariosCtx.PaBorrarUsuario(usuario.id_usuario, invoker, user, leng, out retcode, out mensaje);
+
+			if (retcode != 10)
+			{
+				throw new Exception(mensaje);
+			}
+			ret.RetCode = retcode;
+			ret.Mensaje = mensaje;
+
+			return ret;
+		}
 	}
 }
