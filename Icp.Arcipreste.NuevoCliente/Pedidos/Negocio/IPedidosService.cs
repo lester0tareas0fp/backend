@@ -8,5 +8,6 @@ namespace Icp.Arcipreste.NuevoCliente.Pedidos.Negocio
 	{
 		Task<RetcodeMensaje<Pedido>> AddPedido(PedidoDTO pedido);
 		Task<RetcodeMensaje<PedidoSeccion>> AddSeccionPedido(PedidoSeccionDTO pedido);
+		Task<List<Pedido>> GetPedidos();
 	}
 }

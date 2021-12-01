@@ -18,6 +18,11 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios.Negocio
 			return await usuariosCtx.Usuario.Select(x => new UsuarioListaDTO(x.USUARIO, x.ID_USUARIO, x.EMAIL, x.ID_PERFIL) ).ToListAsync();
 		}
 
+		public async Task<UsuarioListaDTO> GetUsuario(int id_usuario)
+		{
+			return await usuariosCtx.Usuario.Where(x => x.ID_USUARIO == id_usuario).Select(x => new UsuarioListaDTO(x.USUARIO, x.ID_USUARIO, x.EMAIL, x.ID_PERFIL)).FirstOrDefaultAsync();
+		}
+
 		public async Task<Usuario> PostUsuarioVerificado(UsuarioEntradaAuthDTO dato)
 		{
 			try{
@@ -49,6 +54,26 @@ namespace Icp.Arcipreste.NuevoCliente.Usuarios.Negocio
 			usuariosCtx.PaCrearUsuario(usuario.usuario, usuario.pass, usuario.email, usuario.id_perfil, invoker, usuario_r, lang, out retcode, out mensaje);
 
 			if(retcode != 10){
+				throw new Exception(mensaje);
+			}
+			ret.RetCode = retcode;
+			ret.Mensaje = mensaje;
+			return ret;
+		}
+
+		public async Task<RetcodeMensaje<Usuario>> UpdateUsuario(UsuarioUpdateDTO usuario)
+		{
+			var ret = new RetcodeMensaje<Usuario>();
+			var retcode = 0;
+			var invoker = 0;
+			var lang = "es";
+			var usuario_r = "";
+			var mensaje = "";
+
+			usuariosCtx.PaActualizarUsuario(usuario.id_usuario, usuario.usuario, usuario.pass, usuario.email, usuario.id_perfil, invoker, usuario_r, lang, out retcode, out mensaje);
+
+			if (retcode != 10)
+			{
 				throw new Exception(mensaje);
 			}
 			ret.RetCode = retcode;

@@ -34,8 +34,16 @@ namespace Icp.Arcipreste.NuevoCliente.Articulos
 		[Route("articulo")]
 		public async Task<ActionResult<Articulo>> GetArt(int id_articulo)
 		{
-			var articulo = await _articulosService.GetArticulo(id_articulo);
-			return Ok(articulo);	
+			try
+			{
+				var articulo = await _articulosService.GetArticulo(id_articulo);
+				return Ok(articulo);
+
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}				
 		}
 
 		[HttpPost]

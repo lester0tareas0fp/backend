@@ -15,6 +15,20 @@ namespace Icp.Arcipreste.NuevoCliente.Pedidos
 			_pedidosService = pedidosService;	
 		}
 
+		[HttpGet]
+		public async Task<ActionResult<string>> Get()
+		{
+			try
+			{
+				var list = await _pedidosService.GetPedidos();
+
+				return Ok(list);
+			}catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
 		[HttpPost]
 		[Route("crearPedido")]
 		public async Task<ActionResult<string>> PostPedido([FromBody]PedidoDTO pedido)

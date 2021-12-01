@@ -6,6 +6,8 @@ using Icp.Arcipreste.NuevoCliente.Stocks.Negocio;
 using Icp.Arcipreste.NuevoCliente.Imagenes.BaseDatos;
 using Icp.Arcipreste.NuevoCliente.Imagenes.Negocio;
 using Icp.Arcipreste.NuevoCliente.Pedidos.Negocio;
+using Icp.Arcipreste.NuevoCliente.V_Articulos_Stocks.Negocio;
+using Icp.Arcipreste.NuevoCliente.V_Articulos_Stock.BaseDatos;
 
 namespace Icp.Arcipreste.NuevoCliente
 {
@@ -63,6 +65,11 @@ namespace Icp.Arcipreste.NuevoCliente
 				options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
 			services.AddScoped<IPedidosService, PedidosService>();
+
+			services.AddDbContext<V_Articulos_StocksDbContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+			services.AddScoped<IV_Articulos_StocksService, V_Articulos_StocksService>();
 
 
 

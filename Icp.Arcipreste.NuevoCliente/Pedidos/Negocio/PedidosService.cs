@@ -13,6 +13,11 @@ namespace Icp.Arcipreste.NuevoCliente.Pedidos.Negocio
 			this.pedidosCtx = pedidosCtx;
 		}
 
+		public async Task<List<Pedido>> GetPedidos()
+		{
+			return await pedidosCtx.Pedido.ToListAsync();
+		}
+
 		public async Task<RetcodeMensaje<Pedido>> AddPedido(PedidoDTO pedido)
 		{
 			var ret = new RetcodeMensaje<Pedido>();
