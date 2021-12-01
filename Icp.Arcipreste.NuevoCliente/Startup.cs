@@ -8,6 +8,8 @@ using Icp.Arcipreste.NuevoCliente.Imagenes.Negocio;
 using Icp.Arcipreste.NuevoCliente.Pedidos.Negocio;
 using Icp.Arcipreste.NuevoCliente.V_Articulos_Stocks.Negocio;
 using Icp.Arcipreste.NuevoCliente.V_Articulos_Stock.BaseDatos;
+using Icp.Arcipreste.NuevoCliente.Seccion_Pedidos.BaseDatos;
+using Icp.Arcipreste.NuevoCliente.Seccion_Pedidos.Negocio;
 
 namespace Icp.Arcipreste.NuevoCliente
 {
@@ -70,6 +72,11 @@ namespace Icp.Arcipreste.NuevoCliente
 				options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
 			services.AddScoped<IV_Articulos_StocksService, V_Articulos_StocksService>();
+
+			services.AddDbContext<Seccion_PedidosDbContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+			services.AddScoped<ISeccion_PedidosService, Seccion_PedidosService>();
 
 
 
