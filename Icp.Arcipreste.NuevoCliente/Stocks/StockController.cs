@@ -29,7 +29,27 @@ namespace Icp.Arcipreste.NuevoCliente.Stocks
 			}
 		}
 
-        [HttpGet]
+		[HttpGet]
+		[Route("almacen")]
+		public async Task<ActionResult<string>> StockAlmacen(int id_stock)
+		{
+			try
+			{
+				var stock = await _stockService.GetAlmacen(id_stock);
+
+				StockAlmacenDTO almacen = new StockAlmacenDTO(stock.ID_ALMACEN);
+				
+				return Ok(almacen);
+
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
+
+		[HttpGet]
 		[Route("parametros")]
         public async Task<ActionResult<string>> StockArticuloAlmacen(int id_articulo, int id_almacen)
         {

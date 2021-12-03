@@ -10,5 +10,7 @@ namespace Icp.Arcipreste.NuevoCliente.Stocks.Negocio
 		Task<Stock> GetStockArticuloAlmacen(int id_articulo, int id_almacen);
 
 		Task<RetcodeMensaje<Stock>> AddStock(StockInsertDTO stockInsert);
+
+		Task<Stock> GetAlmacen(int id_stock);
 	}
 }

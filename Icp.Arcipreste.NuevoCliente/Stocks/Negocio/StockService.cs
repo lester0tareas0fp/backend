@@ -53,6 +53,27 @@ namespace Icp.Arcipreste.NuevoCliente.Stocks.Negocio
 
         }
 
+		public async Task<Stock> GetAlmacen(int id_stock)
+		{
+			try
+			{
+				var almacen = await stocksCtx.Stock.FirstOrDefaultAsync(x => (x.ID_STOCK == id_stock));
+
+				if (almacen == null)
+				{
+					almacen = new Stock();
+				}
+
+				return almacen;
+
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+
+		}
+
 		public async Task<RetcodeMensaje<Stock>> AddStock(StockInsertDTO stockInsert)
 		{
 			var ret = new RetcodeMensaje<Stock>();
